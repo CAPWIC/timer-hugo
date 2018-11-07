@@ -1,4 +1,5 @@
 {{ partial "header.html" . }}
+{{ partial "nav.html" . }}
 
 {{ partial "page-title.html" . }}
 
@@ -6,7 +7,7 @@
 {{ "<!-- Contact Section Start -->" | safeHTML }}
 <section id="contact-section">
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6">
                 <div class="block">
                     {{ with .Site.Data.contact.contactFormTitle }}<h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">{{ . }}</h2>{{ end }}
@@ -55,9 +56,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row address-details">
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
                 <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
                     <i class="ion-ios-location-outline"></i>
                     {{ with .Site.Data.contact.officeAddress1 }}<h5>{{ . }}</h5>{{ end }}
@@ -68,7 +69,7 @@
                     <i class="ion-ios-location-outline"></i>
                     {{ with .Site.Data.contact.officeAddress2 }}<h5>{{ . }}</h5>{{ end }}
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-3">
                 <div class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
                     <i class="ion-ios-email-outline"></i>
