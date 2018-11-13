@@ -416,10 +416,16 @@ a:hover {
   color: #fff;
   padding: 85px 65px;
   float: left;
+  min-height: 451px;
 }
 
 .about-feature .block p {
   font-weight: 300;
+}
+
+.about-feature .block a {
+  color: white;
+  text-decoration: underline;
 }
 
 .about-feature .about-feature-1 {
@@ -515,7 +521,8 @@ figure:hover .overlay .buttons a {
 
 figure .overlay {
   position: absolute;
-  top: 0;
+  /* top: 0; */
+  max-height: 50%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -547,10 +554,11 @@ figure .overlay:hover a {
 }
 
 figure .buttons {
-  margin-top: 40%;
+  margin-top: 25%;
   text-align: center;
   transform: translateY(-50%);
   display: inline-block;
+  color: white;
 }
 
 figure .buttons a:hover {
