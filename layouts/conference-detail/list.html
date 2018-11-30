@@ -7,7 +7,7 @@
 <section class="company-description">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s">
+            <div class="col-md-2 wow fadeInLeft" data-wow-delay=".3s">
                 {{ with .Site.Data.conference2019.image }}<img src="{{ . | absURL }}" alt="" class="img-fluid conference-detail-img">{{ end }}
             </div>
             <div class="col-md-6">
@@ -19,6 +19,10 @@
                     </p>
                         
                     {{ end }}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="block">
                     {{ with .Site.Data.conference2019.deadlines }}
                     <dl class="row">
                         {{ range $index, $element := . }}
@@ -28,9 +32,15 @@
                     </dl>
                     {{ end }}
                 </div>
+            </div></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Registration is Open!</h2>
+                    <p>Please <a href="https://aceware.jmu.edu/wconnect/CourseStatus.awp?course=YP19CAP" targe="_blank" rel="noreferrer noopener">register now</a> to join us at CAPWIC 2019!</p>
+
+                </div>
             </div>
-        </div>
-        <div class="row">
+            <div class="row">
             <div class="col-md-12 wow fadeInLeft" data-wow-delay=".3s">
                 {{ range $index, $element := .Site.Data.conference2019.aboutItem }}
                 {{ if eq $index 1}}
