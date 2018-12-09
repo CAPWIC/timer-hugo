@@ -1328,4 +1328,41 @@ ul.social-icons li {
 .conference-detail-img {
   max-height: 250px;
 }
+
+.about-feature .card-body {
+  color: black;
+}
+
+.about-feature .block h5 a {
+  color: #450084;
+  text-decoration: none;
+}
+
+.card img {
+  object-fit: cover;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.about-feature .card-deck .card, .card-deck .card {
+  min-width: 110px;
+  margin-bottom: 20px;
+}
+
+#organizers .card {
+  max-width: 200px;
+}
+
+.card .card-text a {
+  font-size: 12px;
+}
+
+.card a i {
+  margin-right: 5px;
+}
+
+.about-feature .card a {
+  color: black;
+  text-decoration: none;
+}
 /*# sourceMappingURL=maps/style.css.map */

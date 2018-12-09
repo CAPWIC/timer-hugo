@@ -22,9 +22,9 @@
                         </h1>
                     </section>
                     {{ with .Site.Params.banner.description | safeHTML }}<h2 class="wow fadeInUp animated" data-wow-delay=".6s">{{ . }}</h2>{{ end }}
-                    {{ if .Site.Params.banner.btn }}                    
+                    {{ range $index, $element := .Site.Params.banner.btn }}
                         <a class="btn-lines dark light wow fadeInUp animated btn btn-default btn-green hvr-bounce-to-right" data-wow-delay=".9s"
-                            href="{{ .Site.Params.banner.btnURL }}">{{ .Site.Params.banner.btnText | safeHTML }}</a>
+                            href="{{ $element.btnURL }}">{{ $element.btnText | safeHTML }}</a>
                     {{ end }}
                 </div>
             </div>
