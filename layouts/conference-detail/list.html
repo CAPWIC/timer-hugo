@@ -49,7 +49,7 @@
             <div class="col-md-12 wow fadeInLeft" data-wow-delay=".3s">
                 {{ range $index, $element := .Site.Data.conference2019.aboutItem }}
                 <!-- <p>{{ $index }} {{ .title }}</p> -->
-                {{ if eq $index 3}}
+                {{ if eq $index 2}}
                     {{ with .title }}<h2 id="{{ $element.type }}">{{ . }}</h2>{{ end }}
                     {{ with .description }}<p>{{ . | markdownify}}</p>{{ end }}
                     <table class="table">
@@ -130,11 +130,12 @@
 </section>
 {{ "<!--  Company Feature Section End -->" | safeHTML }}
 
-{{ with .Site.Data.conference2019.organizers}}
+{{ with .Site.Data.conference2019.organizers }}
 <section id="organizers">
     <div class="container">
         <div class="row">
             <div class="col-md">
+                <h2>Organizers</h2>
                 {{ range $index, $element := . }}
                 <!-- <p>{{ $index }} {{ $element }}</p> -->
                 {{ range $role, $e := $element }}
@@ -142,6 +143,43 @@
                 <div class="card-deck">
                     {{ range $j, $map := $e }}
                     {{ if and (gt $j 0) (eq (mod $j 4) 0) }}
+                        </div>
+                        <div class="card-deck">
+                    {{ end }}
+                    <div class="card">
+                        {{ with $map.avatar }}
+                        <!-- <img src="{{$map.avatar}}" alt="{{$map.name}}"> -->
+                        {{ end }}
+                        <div class="card-body">
+                            {{ with $map.name }}
+                            <h5 class="card-title">
+                                {{ with $map.link }}
+                                <a rel="noopener noreferrer" target='_blank' href="{{$map.link}}" title="{{$map.name}}">
+                                    {{ end }}{{$map.name}}{{ with $map.link }}</a>{{ end }}</h5>
+                            {{ end }}
+                            {{ with $map.email }}
+                            <p class="card-text">
+                                <a rel="noopener noreferrer" target='_blank' href="mailto:{{$map.email}}"><i class="ion-ios-email"></i>{{$map.email}}</a>
+                            </p>
+                            {{ end }}
+                            <p class="card-text">
+                                <small>{{$map.affiliation}}</small>
+                            </p>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="card-deck">
+                {{ range $index, $map := sort $.Site.Data.conference2019.organizer_photos "last_name" }}
+                <!-- <p>{{ $index }} {{ $map }}</p> -->
+                
+                    {{ if and (gt $index 0) (eq (mod $index 4) 0) }}
                         </div>
                         <div class="card-deck">
                     {{ end }}
@@ -164,21 +202,10 @@
                             <p class="card-text">
                                 <small>{{$map.affiliation}}</small>
                             </p>
-                            <!-- <dl class="card-text">
-                                                        {{ range $k, $val := $map }}
-                                                            {{if eq $k "email"}}
-                                                                <dt>{{ $k }}</dt>
-                                                                <dd>{{ $val }}</dd>
-                                                            
-                                                                {{ end }}
-                                                            {{ end }}
-                                                            </dl> -->
                         </div>
                     </div>
                     {{ end }}
                 </div>
-                {{ end }}
-                {{ end }}
             </div>
         </div>
     </div>
