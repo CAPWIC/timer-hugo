@@ -134,47 +134,50 @@
 <section id="organizers">
     <div class="container">
         <div class="row">
-            <div class="col-md">
+            <div class="col-md-3">
                 <h2>Organizers</h2>
                 {{ range $index, $element := . }}
                 <!-- <p>{{ $index }} {{ $element }}</p> -->
                 {{ range $role, $e := $element }}
                 <h3>{{ $role }}</h3>
-                <div class="card-deck">
-                    {{ range $j, $map := $e }}
-                    {{ if and (gt $j 0) (eq (mod $j 4) 0) }}
-                        </div>
-                        <div class="card-deck">
-                    {{ end }}
-                    <div class="card">
-                        {{ with $map.avatar }}
-                        <!-- <img src="{{$map.avatar}}" alt="{{$map.name}}"> -->
-                        {{ end }}
-                        <div class="card-body">
+                <ul>
+                {{ range $j, $map := $e }}
+                
+                <!-- <div class="card-deck"> -->
+                    
+                    <!-- <div class="card"> -->
+                        <!-- <div class="card-body"> -->
+                            <li>
                             {{ with $map.name }}
-                            <h5 class="card-title">
+                            <!-- <h5 class="card-title"> -->
                                 {{ with $map.link }}
                                 <a rel="noopener noreferrer" target='_blank' href="{{$map.link}}" title="{{$map.name}}">
-                                    {{ end }}{{$map.name}}{{ with $map.link }}</a>{{ end }}</h5>
+                                    {{ end }}{{$map.name}}{{ with $map.link }}</a>{{ end }}
+                                <!-- </h5> -->
                             {{ end }}
                             {{ with $map.email }}
-                            <p class="card-text">
+                            <!-- <p class="card-text"> -->
+                                <br>
                                 <a rel="noopener noreferrer" target='_blank' href="mailto:{{$map.email}}"><i class="ion-ios-email"></i>{{$map.email}}</a>
-                            </p>
+                            <!-- </p> -->
                             {{ end }}
-                            <p class="card-text">
+                            <!-- <p class="card-text"> -->
+                                <br>
                                 <small>{{$map.affiliation}}</small>
-                            </p>
-                        </div>
-                    </div>
+                            <!-- </p> -->
+                            </li>
+                        <!-- </div> -->
+                    <!-- </div> -->
                     {{ end }}
-                </div>
+                    <!-- </div> -->
+                </ul>
                 {{ end }}
                 {{ end }}
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md">
+        <!-- </div>
+        <div class="row"> -->
+            <div class="col-md-9">
+                <h2>Organizers by Last Name(s)</h2>
                 <div class="card-deck">
                 {{ range $index, $map := sort $.Site.Data.conference2019.organizer_photos "last_name" }}
                 <!-- <p>{{ $index }} {{ $map }}</p> -->
