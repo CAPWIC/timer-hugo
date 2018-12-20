@@ -143,7 +143,6 @@ a:hover {
   background: none;
   font-size: 16px;
   padding: 8px  0;
-  display: block;
 }
 
 .global-page-header .breadcrumb .active, .global-page-header .breadcrumb li a {
@@ -1367,5 +1366,15 @@ ul.social-icons li {
 }
 h2 {
   font-size: 2rem;
+}
+
+.sponsor.card .card-title {
+  margin-bottom: 0;
+}
+
+.sponsor.card img {
+  background-color: #333;
+  max-width: inherit;
+  object-fit: contain;
 }
 /*# sourceMappingURL=maps/style.css.map */

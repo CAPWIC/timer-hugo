@@ -1,0 +1,54 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+
+{{ partial "page-title.html" . }}
+
+{{ "<!-- Company Description Section Start -->" | safeHTML }}
+<section class="company-description">
+    <div class="container">
+        <div class="row">
+            {{ partial "2019/sponsors.html" $ }}
+            <div class="col-md wow fadeInLeft" data-wow-delay=".3s">
+                {{ range $index, $element := .Site.Data.conference2019.aboutItem }}
+                {{ if eq $index 2}}
+                    {{ with .title }}<h2 id="{{ $element.type }}">{{ . }}</h2>{{ end }}
+                    {{ with .description }}<p>{{ . | markdownify}}</p>{{ end }}
+                    <table class="table">
+                        {{ with $.Site.Data.conference2019.sponsorshipCosts }}
+                        <thead>
+                            <tr>
+                                <th>Perk</th>
+                                {{ range $index, $element := . }}
+                                <th>{{ .name }}<br>{{ .cost }}</th>
+                                {{ end }}
+                            </tr>
+                        </thead>
+                        {{ end }}
+                        {{ range $sindex, $sponsorship := $.Site.Data.conference2019.sponsorship }}
+                        <tbody>
+                            <tr>
+                                <th colspan="7"> {{ .type }}</th>
+                            </tr>
+                            {{ range $pindex, $perk := .perks }}
+                            <tr>
+                                <td>{{ .name }}</td>
+                                {{ range $lindex, $level := .levels }}
+                                {{ if eq $level.enabled true}}
+                                <td><i class="ion-checkmark"></i></td>
+                                {{ else }}
+                                <td></td>
+                                {{ end }}
+                                {{ end }}
+                            </tr>
+                            {{ end }}
+                        </tbody>
+                        {{ end }}
+                    </table>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ partial "footer.html" . }}

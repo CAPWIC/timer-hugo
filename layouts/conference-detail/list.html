@@ -5,8 +5,9 @@
 
 {{ "<!-- Company Description Section Start -->" | safeHTML }}
 <section class="company-description">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
+            {{ partial "2019/sponsors.html" $ }}
             <div class="col-md-2 wow fadeInLeft" data-wow-delay=".3s">
                 {{ with .Site.Data.conference2019.image }}<img src="{{ . | absURL }}" alt="" class="img-fluid conference-detail-img">{{ end }}
             </div>
@@ -26,7 +27,7 @@
                     {{ end }}
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="block">
                     {{ with .Site.Data.conference2019.deadlines }}
                     <dl class="row">
@@ -37,60 +38,6 @@
                     </dl>
                     {{ end }}
                 </div>
-            </div></div>
-            <!-- <div class="row">
-                <div class="col-md-12">
-                    <h2>Registration is Open!</h2>
-                    <p>Please <a href="https://aceware.jmu.edu/wconnect/CourseStatus.awp?course=YP19CAP" targe="_blank" rel="noreferrer noopener">register now</a> to join us at CAPWIC 2019! If you have any questions or concerns about registration, you can reach us at <a href="mailto:registration@capwic.org" title="email registration staff">registration@capwic.org</a>.</p>
-
-                </div>
-            </div> -->
-            <div class="row">
-            <div class="col-md-12 wow fadeInLeft" data-wow-delay=".3s">
-                {{ range $index, $element := .Site.Data.conference2019.aboutItem }}
-                <!-- <p>{{ $index }} {{ .title }}</p> -->
-                {{ if eq $index 2}}
-                    {{ with .title }}<h2 id="{{ $element.type }}">{{ . }}</h2>{{ end }}
-                    {{ with .description }}<p>{{ . | markdownify}}</p>{{ end }}
-                    <table class="table">
-                        {{ with $.Site.Data.conference2019.sponsorshipCosts }}
-                        <thead>
-                            <tr>
-                                <th>Perk</th>
-                                {{ range $index, $element := . }}
-                                <th>{{ .name }}<br>{{ .cost }}</th>
-                                <!-- <th>Diamond</th>
-                                <th>Platinum</th>
-                                <th>Gold</th>
-                                <th>Silver</th>
-                                <th>Recruiter</th>
-                                <th>Non-Profit/Academic</th> -->
-                                {{ end }}
-                            </tr>
-                        </thead>
-                        {{ end }}
-                        {{ range $sindex, $sponsorship := $.Site.Data.conference2019.sponsorship }}
-                        <tbody>
-                            <tr>
-                                <th colspan="7"> {{ .type }}</th>
-                            </tr>
-                            {{ range $pindex, $perk := .perks }}
-                            <tr>
-                                <td>{{ .name }}</td>
-                                {{ range $lindex, $level := .levels }}
-                                {{ if eq $level.enabled true}}
-                                <td><i class="ion-checkmark"></i></td>
-                                {{ else }}
-                                <td></td>
-                                {{ end }}
-                                {{ end }}
-                            </tr>
-                            {{ end }}
-                        </tbody>
-                        {{ end }}
-                    </table>
-                {{ end }}
-                {{ end }}
             </div>
         </div>
     </div>
@@ -129,96 +76,5 @@
     </div>
 </section>
 {{ "<!--  Company Feature Section End -->" | safeHTML }}
-
-{{ with .Site.Data.conference2019.organizers }}
-<section id="organizers">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h2>Organizers</h2>
-                {{ range $index, $element := . }}
-                <!-- <p>{{ $index }} {{ $element }}</p> -->
-                {{ range $role, $e := $element }}
-                <h3>{{ $role }}</h3>
-                <ul>
-                {{ range $j, $map := $e }}
-                
-                <!-- <div class="card-deck"> -->
-                    
-                    <!-- <div class="card"> -->
-                        <!-- <div class="card-body"> -->
-                            <li>
-                            {{ with $map.name }}
-                            <!-- <h5 class="card-title"> -->
-                                {{ with $map.link }}
-                                <a rel="noopener noreferrer" target='_blank' href="{{$map.link}}" title="{{$map.name}}">
-                                    {{ end }}{{$map.name}}{{ with $map.link }}</a>{{ end }}
-                                <!-- </h5> -->
-                            {{ end }}
-                            {{ with $map.email }}
-                            <!-- <p class="card-text"> -->
-                                <br>
-                                <a rel="noopener noreferrer" target='_blank' href="mailto:{{$map.email}}"><i class="ion-ios-email"></i>{{$map.email}}</a>
-                            <!-- </p> -->
-                            {{ end }}
-                            <!-- <p class="card-text"> -->
-                                <br>
-                                <small>{{$map.affiliation}}</small>
-                            <!-- </p> -->
-                            </li>
-                        <!-- </div> -->
-                    <!-- </div> -->
-                    {{ end }}
-                    <!-- </div> -->
-                </ul>
-                {{ end }}
-                {{ end }}
-            </div>
-        <!-- </div>
-        <div class="row"> -->
-            <div class="col-md-9">
-                <h2>Organizers by Last Name(s)</h2>
-                <div class="card-deck">
-                {{ range $index, $map := sort $.Site.Data.conference2019.organizer_photos "last_name" }}
-                <!-- <p>{{ $index }} {{ $map }}</p> -->
-                
-                    {{ if and (gt $index 0) (eq (mod $index 4) 0) }}
-                        </div>
-                        <div class="card-deck">
-                    {{ end }}
-                    <div class="card">
-                        {{ with $map.avatar }}
-                        <img src="{{$map.avatar}}" alt="{{$map.name}}">
-                        {{ end }}
-                        <div class="card-body">
-                            {{ with $map.name }}
-                            <h5 class="card-title">
-                                {{ with $map.link }}
-                                <a rel="noopener noreferrer" target='_blank' href="{{$map.link}}" title="{{$map.name}}">
-                                    {{ end }}{{$map.name}}{{ with $map.link }}</a>{{ end }}</h5>
-                            {{ end }}
-                            {{ with $map.email }}
-                            <p class="card-text">
-                                <a rel="noopener noreferrer" target='_blank' href="mailto:{{$map.email}}"><i class="ion-ios-email"></i>{{$map.email}}</a>
-                            </p>
-                            {{ end }}
-                            <p class="card-text">
-                                <small>{{$map.affiliation}}</small>
-                            </p>
-                        </div>
-                    </div>
-                    {{ end }}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-{{ end }}
-
-{{ partial "team.html" . }}
-
-{{ partial "clients.html" . }}
-
-
 
 {{ partial "footer.html" . }}
