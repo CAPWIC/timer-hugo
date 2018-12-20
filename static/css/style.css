@@ -415,7 +415,7 @@ a:hover {
   color: #fff;
   padding: 85px 65px;
   float: left;
-  min-height: 451px;
+  /* min-height: 451px; */
 }
 
 .about-feature .block p {
@@ -1348,7 +1348,7 @@ ul.social-icons li {
   margin-bottom: 20px;
 }
 
-#organizers .card {
+#organizers .card-deck .card {
   max-width: 200px;
 }
 
@@ -1376,5 +1376,13 @@ h2 {
   background-color: #333;
   max-width: inherit;
   object-fit: contain;
+}
+a i {
+  margin-right: 10px;
+}
+
+nav a i {
+  margin-right: inherit;
+  margin-left: 2px;
 }
 /*# sourceMappingURL=maps/style.css.map */

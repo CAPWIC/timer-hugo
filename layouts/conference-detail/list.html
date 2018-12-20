@@ -5,13 +5,13 @@
 
 {{ "<!-- Company Description Section Start -->" | safeHTML }}
 <section class="company-description">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             {{ partial "2019/sponsors.html" $ }}
-            <div class="col-md-2 wow fadeInLeft" data-wow-delay=".3s">
+            <!-- <div class="col-md-2 wow fadeInLeft" data-wow-delay=".3s">
                 {{ with .Site.Data.conference2019.image }}<img src="{{ . | absURL }}" alt="" class="img-fluid conference-detail-img">{{ end }}
-            </div>
-            <div class="col-md-4">
+            </div> -->
+            <div class="col-md">
                 <div class="block">
                     {{ with .Site.Data.conference2019.title }}<h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">{{ . }}</h3>{{ end }}
                     {{ with .Site.Data.conference2019.description }}
@@ -27,7 +27,7 @@
                     {{ end }}
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md">
                 <div class="block">
                     {{ with .Site.Data.conference2019.deadlines }}
                     <dl class="row">
@@ -49,10 +49,10 @@
         <div class="row">
             {{ range $index, $element := .Site.Data.conference2019.aboutItem }}
             {{ if ne .type "sponsorship"}}
-                <div class="col-lg px-0">
             
-                {{ $class := add $index 1 }}
-                <div class="block about-feature-{{ $class }} wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
+            {{ $class := add $index 1 }}
+            <div class="col-lg px-0 about-feature-{{ $class }}">
+                <div class="block wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
                     {{ with .title }}<h2>{{ . }}</h2>{{ end }}
                     {{ with .description }}<p>{{ . | markdownify }}</p>{{ end }}
                     {{ if eq .type "registration" }}

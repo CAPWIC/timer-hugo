@@ -90,18 +90,18 @@ theme = "timer-hugo"
         copyright_owner = "Themefisher"
         copyright_since = "2018"
         [[params.footer.social]]
-            icon = "ion-social-facebook"
+            icon = "icon ion-logo-facebook"
             link = "https://facebook.com"
         [[params.footer.social]]
-            icon = "ion-social-twitter"
+            icon = "icon ion-logo-twitter"
             link = "https://twitter.com"
         [[params.footer.social]]
-            icon = "ion-social-linkedin"
+            icon = "icon ion-logo-linkedin"
             link = "https://linkedin.com"
         [[params.footer.social]]
-            icon = "ion-social-googleplus"
+            icon = "icon ion-logo-googleplus"
             link = "https://googleplus.com"
         [[params.footer.social]]
-            icon = "ion-social-github"
+            icon = "icon ion-logo-github"
             link = "https://github.com"
     

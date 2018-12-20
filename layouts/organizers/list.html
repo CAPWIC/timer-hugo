@@ -5,10 +5,10 @@
 
 {{ with .Site.Data.conference2019.organizers }}
 <section id="organizers">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             {{ partial "2019/sponsors.html" $ }}
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <h2>Organizers by Last Name(s)</h2>
                 <div class="card-deck">
                     {{ range $index, $map := sort $.Site.Data.conference2019.organizer_photos "last_name" }}
@@ -31,7 +31,7 @@
                             {{ end }}
                             {{ with $map.email }}
                             <p class="card-text">
-                                <a rel="noopener noreferrer" target='_blank' href="mailto:{{$map.email}}"><i class="ion-ios-email"></i>{{$map.email}}</a>
+                                <a rel="noopener noreferrer" target='_blank' href="mailto:{{$map.email}}"><i class="icon ion-ios-email"></i>{{$map.email}}</a>
                             </p>
                             {{ end }}
                             <p class="card-text">
@@ -42,7 +42,7 @@
                     {{ end }}
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <h2>Organizers</h2>
                 {{ range $index, $element := . }}
                 <!-- <p>{{ $index }} {{ $element }}</p> -->
@@ -66,7 +66,7 @@
                         {{ with $map.email }}
                         <!-- <p class="card-text"> -->
                         <br>
-                        <a rel="noopener noreferrer" target='_blank' href="mailto:{{$map.email}}"><i class="ion-ios-email"></i>{{$map.email}}</a>
+                        <a rel="noopener noreferrer" target='_blank' href="mailto:{{$map.email}}"><i class="icon ion-ios-email"></i>contact me</a>
                         <!-- </p> -->
                         {{ end }}
                         <!-- <p class="card-text"> -->
