@@ -1385,4 +1385,9 @@ nav a i {
   margin-right: inherit;
   margin-left: 2px;
 }
+
+.jumbotron a i {
+  margin-right: inherit;
+  margin-left: 5px;
+}
 /*# sourceMappingURL=maps/style.css.map */
