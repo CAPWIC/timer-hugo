@@ -22,8 +22,27 @@
                     <h2>Registration is Open!</h2>
                     <p>Please <a href="https://aceware.jmu.edu/wconnect/CourseStatus.awp?course=YP19CAP" targe="_blank" rel="noreferrer noopener">register
                             now</a> to join us at CAPWIC 2019! If you have any questions or concerns about registration, you can reach us
-                        at <a href="mailto:registration@capwic.org" title="email registration staff">registration@capwic.org</a>.</p>
-                        
+                        at <a href="mailto:registration@capwic.org" title="email registration staff">registration@capwic.org</a>.</p>    
+                    {{ end }}
+                    {{ with .Site.Data.conference2019.speakers }}
+                        {{ $yr := $.Site.Params.current_conf_year }}
+                        {{$data := print "conference" $yr}}
+                        <h2 id="speakers">Speakers</h2>
+                        {{ range $index, $speaker := . }}
+                            <div class="card mb-3">
+                                <img src="/{{$yr}}/speakers/{{ $speaker.img }}" class="card-img-top" alt="{{ $speaker.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="{{$speaker.link}}">{{ $speaker.name }}</a></h5>
+                                    <p class="card-text">
+                                        {{ $speaker.bio | truncate 250 }}
+                                        {{ if gt (len $speaker.bio) 250 }}
+                                            <a data-toggle="collapse" href="#{{$index}}-more-bio">Read more</a>
+                                        {{ end }}
+                                    </p>
+                                        <p class="card-text collapse" id="{{$index}}-more-bio">{{ substr $speaker.bio 243 | safeHTML}}</p>
+                                </div>
+                            </div>
+                        {{ end }}
                     {{ end }}
                 </div>
             </div>
@@ -33,7 +52,7 @@
                     <dl class="row">
                         {{ range $index, $element := . }}
                         <dt class="col-md-6 text-right">{{ .date }}</dt>
-                        <dd class="col-md-6">{{ .description }}</dd>
+                        <dd class="col-md-6">{{ .description | safeHTML }}</dd>
                         {{ end }}
                     </dl>
                     {{ end }}
