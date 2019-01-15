@@ -1373,9 +1373,12 @@ h2 {
 }
 
 .sponsor.card img {
-  background-color: #333;
   max-width: inherit;
   object-fit: contain;
+}
+
+.sponsor.card img.dark {
+  background-color: #333;
 }
 a i {
   margin-right: 10px;
