@@ -66,6 +66,13 @@
                             {{ end }}
                         </ul>
                     {{ end }}
+                    {{ with .Site.Data.conference2019.policies }}
+                        <h3>Community Standards</h3>
+                        {{ range $index, $element := . }}
+                            <h4>{{ .name }}</h4>
+                            <p>{{ .body | safeHTML }}</p>
+                        {{ end }}
+                    {{ end }}
                 </div>
             </div>
         </div>
