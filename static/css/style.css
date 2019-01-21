@@ -1360,6 +1360,10 @@ ul.social-icons li {
   margin-right: 5px;
 }
 
+.card {
+  margin-bottom: 20px;
+}
+
 .about-feature .card a {
   color: black;
   text-decoration: none;
