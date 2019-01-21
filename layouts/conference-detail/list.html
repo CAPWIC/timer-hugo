@@ -51,10 +51,20 @@
                     {{ with .Site.Data.conference2019.deadlines }}
                     <dl class="row">
                         {{ range $index, $element := . }}
-                        <dt class="col-md-6 text-right">{{ .date }}</dt>
-                        <dd class="col-md-6">{{ .description | safeHTML }}</dd>
+                        <dt class="col-md-5 text-right">{{ .date }}</dt>
+                        <dd class="col-md">{{ .description | safeHTML }}</dd>
                         {{ end }}
                     </dl>
+                    {{ end }}
+                    {{ with .Site.Data.conference2019.flyers }}
+                        {{ $yr := $.Site.Params.current_conf_year }}
+                        {{$data := print "conference" $yr}}
+                        <h3 class="text-right">Flyers</h3>
+                        <ul class="text-right">
+                            {{ range $index, $element := . }}
+                            <li><a href="/{{$yr}}/flyers/{{ .link }}">{{ .text }} <i class="icon ion-md-cloud-download"></i></a></li>
+                            {{ end }}
+                        </ul>
                     {{ end }}
                 </div>
             </div>
