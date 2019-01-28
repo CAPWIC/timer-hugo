@@ -1397,4 +1397,8 @@ nav a i {
   margin-right: inherit;
   margin-left: 5px;
 }
+hr {
+  border: none;
+  border-top: 3px solid #333;
+}
 /*# sourceMappingURL=maps/style.css.map */
