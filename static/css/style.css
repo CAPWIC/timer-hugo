@@ -1401,4 +1401,11 @@ hr {
   border: none;
   border-top: 3px solid #333;
 }
+
+.speaker.card {
+  max-width: 200px;
+  display: inline-block;
+  vertical-align: top;
+}
+
 /*# sourceMappingURL=maps/style.css.map */

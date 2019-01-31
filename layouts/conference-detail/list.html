@@ -26,11 +26,12 @@
                         at <a href="mailto:registration@capwic.org" title="email registration staff">registration@capwic.org</a>.</p>    
                     {{ end }}
                     {{ with .Site.Data.conference2019.speakers }}
+                        
                         {{ $yr := $.Site.Params.current_conf_year }}
                         {{$data := print "conference" $yr}}
                         <h2 id="speakers">Speakers</h2>
                         {{ range $index, $speaker := . }}
-                            <div class="card mb-3">
+                            <div class="speaker card mb-3">
                                 <img src="/{{$yr}}/speakers/{{ $speaker.img }}" class="card-img-top" alt="{{ $speaker.name }}">
                                 <div class="card-body">
                                     <h5 class="card-title"><a href="{{$speaker.link}}">{{ $speaker.name }}</a></h5>
