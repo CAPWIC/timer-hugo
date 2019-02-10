@@ -1408,4 +1408,28 @@ hr {
   vertical-align: top;
 }
 
+.bg-capwic-primary {
+  background-color: #02bdd5 !important;
+}
+
+.bg-capwic-secondary {
+  background-color: #00B0C7 !important;
+}
+
+.bg-capwic-tertiary {
+  background-color: #00A6BB !important;
+}
+
+.border-capwic-primary {
+  border-color: #02bdd5 !important;
+}
+
+.border-capwic-secondary {
+  border-color: #00B0C7 !important;
+}
+
+.border-capwic-tertiary {
+  border-color: #00A6BB !important;
+}
+
 /*# sourceMappingURL=maps/style.css.map */
