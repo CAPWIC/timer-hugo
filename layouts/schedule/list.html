@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
 {{ partial "nav.html" . }}
-
+<div class="capwic-body">
 {{ partial "page-title.html" . }}
 
 {{ with .Site.Data.conference2019 }}
@@ -14,9 +14,44 @@
                     <h1 class="display-4">{{ .heading }}</h1>
                     <p class="lead">{{ .body | safeHTML }}</p>
                 </div>
-                <div class="list-group">
-                    {{ range .days}}
-                        
+
+                <div id="program">
+                    {{ range $i, $day := .days}}
+                    <div class="card border-{{$day.color}}" id="{{$i}}">
+                                                <div class="card-header bg-{{$day.color}}" id="headingOne">
+                        <h5 class="mb-0">
+                            <a href="#{{$i}}"class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                {{ $day.name }}
+                            </a>
+                        </h5>
+                    </div>
+                    
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                        <div class="card-body">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <th>Time</th>
+                                    <th>Title</th>
+                                    <th>Location</th>
+                                    <th>Description</th>
+                                </thead>
+                                <tbody>
+                                    {{ range $eventIndex, $event := $day.events}}
+                                    {{ $eventId := print $i "-" $eventIndex }}
+                                    <!-- <tr onlick="console.log('#{{ $eventId }}');window.location.hash='#{{ $eventId }}'" id="{{ $eventId }}"> -->
+                                    <tr id="{{ $eventId }}">
+                                        <td>{{ $event.time_start }} - {{ $event.time_end }}</td>
+                                        <td>{{ $event.name }}</td>
+                                        <td>{{ $event.location }}</td>
+                                        <td>{{ $event.description | safeHTML }}</td>
+                                    </tr>
+                                    {{ end }}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
                     {{ end }}
                 </div>
             </div>
@@ -26,5 +61,5 @@
 </section>
 {{ end }}
 
-
+</div>
 {{ partial "footer.html" . }}
