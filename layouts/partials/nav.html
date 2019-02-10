@@ -1,5 +1,5 @@
-<div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
     <a class="navbar-brand" href="{{ .Site.BaseURL }}">
         {{ if isset .Site.Params "logo" }}
         <img src="{{ .Site.Params.logo | absURL }}" alt="{{ if isset .Site.Params "logo_alt" }}{{ .Site.Params.logo_alt }}{{ else }}logo{{ end }}">
@@ -49,5 +49,5 @@
                 </div>
             </li>
     </div>
+    </div>
 </nav>
-</div>
