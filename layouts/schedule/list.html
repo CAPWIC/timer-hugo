@@ -41,9 +41,9 @@
                                     {{ $eventId := print $i "-" $eventIndex }}
                                     <!-- <tr onlick="console.log('#{{ $eventId }}');window.location.hash='#{{ $eventId }}'" id="{{ $eventId }}"> -->
                                     <tr id="{{ $eventId }}">
-                                        <td>{{ $event.time_start }} - {{ $event.time_end }}</td>
-                                        <td>{{ $event.name }}</td>
-                                        <td>{{ $event.location }}</td>
+                                        <td>{{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML  }}</td>
+                                        <td>{{ $event.name | safeHTML  }}</td>
+                                        <td>{{ $event.location | safeHTML  }}</td>
                                         <td>{{ $event.description | safeHTML }}</td>
                                     </tr>
                                     {{ end }}
