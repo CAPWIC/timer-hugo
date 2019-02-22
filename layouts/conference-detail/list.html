@@ -8,55 +8,65 @@
     <div class="container">
         <div class="row">
             {{ partial "2019/sponsors.html" $ }}
-            <!-- <div class="col-md-2 wow fadeInLeft" data-wow-delay=".3s">
-                {{ with .Site.Data.conference2019.image }}<img src="{{ . | absURL }}" alt="" class="img-fluid conference-detail-img">{{ end }}
-            </div> -->
             <div class="col-md">
-                <div class="block">
-                    {{ with .Site.Data.conference2019.title }}<h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">{{ . }}</h3>{{ end }}
-                    {{ with .Site.Data.conference2019.description }}
-                    <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
-                        {{ . | safeHTML }}
-                    </p>
-
-                    <h2>Registration is Open!</h2>
-                    <p>Please <a href="https://aceware.jmu.edu/wconnect/CourseStatus.awp?course=YP19CAP" targe="_blank" rel="noreferrer noopener">register now</a> to join us at CAPWIC 2019! If you have any questions or concerns about registration, you can reach us
-                        at <a href="mailto:registration@capwic.org" title="email registration staff">registration@capwic.org</a>.</p>    
-                    {{ end }}
-                    {{ with .Site.Data.conference2019.speakers }}
-                        
+                <div class="row">
+                    <div class="col-md">
+                        <div class="block">
+                            {{ with .Site.Data.conference2019.title }}<h3 class="subtitle wow fadeInUp" data-wow-delay=".3s"
+                                data-wow-duration="500ms">{{ . }}</h3>{{ end }}
+                            {{ with .Site.Data.conference2019.description }}
+                            <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
+                                {{ . | safeHTML }}
+                            </p>
+                    
+                            <h2>Registration is Open!</h2>
+                            <p>Please <a href="https://aceware.jmu.edu/wconnect/CourseStatus.awp?course=YP19CAP" targe="_blank"
+                                    rel="noreferrer noopener">register now</a> to join us at CAPWIC 2019! If you have any questions or
+                                concerns about registration, you can reach us
+                                at <a href="mailto:registration@capwic.org" title="email registration staff">registration@capwic.org</a>.
+                            </p>
+                            {{ end }}
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="block">
+                            {{ with .Site.Data.conference2019.deadlines }}
+                            <dl class="row">
+                                {{ range $index, $element := . }}
+                                <dt class="col-md-5 text-right">{{ .date | safeHTML }}</dt>
+                                <dd class="col-md">{{ .description | safeHTML }}</dd>
+                                {{ end }}
+                            </dl>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        {{ with .Site.Data.conference2019.speakers }}
+                
                         {{ $yr := $.Site.Params.current_conf_year }}
                         {{$data := print "conference" $yr}}
                         <h2 id="speakers">Speakers</h2>
                         {{ range $index, $speaker := . }}
-                            <div class="speaker card mb-3">
-                                <img src="/{{$yr}}/speakers/{{ $speaker.img }}" class="card-img-top" alt="{{ $speaker.name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="{{$speaker.link}}">{{ $speaker.name }}</a></h5>
-                                    <p class="card-text">
-                                        {{ $speaker.bio | truncate 250 }}
-                                        {{ if gt (len $speaker.bio) 250 }}
-                                            <a data-toggle="collapse" href="#{{$index}}-more-bio">Read more</a>
-                                        {{ end }}
-                                    </p>
-                                        <p class="card-text collapse" id="{{$index}}-more-bio">{{ substr $speaker.bio 243 | safeHTML}}</p>
-                                </div>
+                        <div class="speaker card mb-3">
+                            <img src="/{{$yr}}/speakers/{{ $speaker.img }}" class="card-img-top" alt="{{ $speaker.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{$speaker.link}}">{{ $speaker.name }}</a></h5>
+                                <p class="card-text">
+                                    {{ $speaker.bio | truncate 250 }}
+                                    {{ if gt (len $speaker.bio) 250 }}
+                                    <a data-toggle="collapse" href="#{{$index}}-more-bio">Read more</a>
+                                    {{ end }}
+                                </p>
+                                <p class="card-text collapse" id="{{$index}}-more-bio">{{ substr $speaker.bio 243 | safeHTML}}</p>
                             </div>
+                        </div>
                         {{ end }}
-                    {{ end }}
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="block">
-                    {{ with .Site.Data.conference2019.deadlines }}
-                    <dl class="row">
-                        {{ range $index, $element := . }}
-                        <dt class="col-md-5 text-right">{{ .date | safeHTML }}</dt>
-                        <dd class="col-md">{{ .description | safeHTML }}</dd>
                         {{ end }}
-                    </dl>
-                    {{ end }}
-                    {{ with .Site.Data.conference2019.flyers }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ with .Site.Data.conference2019.flyers }}
                         {{ $yr := $.Site.Params.current_conf_year }}
                         {{$data := print "conference" $yr}}
                         <h3 class="text-right">Flyers</h3>
@@ -65,17 +75,20 @@
                             <li><a href="/{{$yr}}/flyers/{{ .link }}">{{ .text }} <i class="icon ion-md-cloud-download"></i></a></li>
                             {{ end }}
                         </ul>
-                    {{ end }}
-                    {{ with .Site.Data.conference2019.policies }}
+                        {{ end }}
+                        {{ with .Site.Data.conference2019.policies }}
                         <h3>Community Standards</h3>
                         {{ range $index, $element := . }}
-                            <h4>{{ .name }}</h4>
-                            <p>{{ .body | safeHTML }}</p>
+                        <h4>{{ .name }}</h4>
+                        <p>{{ .body | safeHTML }}</p>
                         {{ end }}
-                    {{ end }}
+                        {{ end }}
+                    </div>
                 </div>
             </div>
+            
         </div>
+        
     </div>
 </section>
 
