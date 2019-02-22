@@ -51,7 +51,7 @@
                     {{ with .Site.Data.conference2019.deadlines }}
                     <dl class="row">
                         {{ range $index, $element := . }}
-                        <dt class="col-md-5 text-right">{{ .date }}</dt>
+                        <dt class="col-md-5 text-right">{{ .date | safeHTML }}</dt>
                         <dd class="col-md">{{ .description | safeHTML }}</dd>
                         {{ end }}
                     </dl>
