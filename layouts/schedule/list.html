@@ -18,9 +18,9 @@
                 <div id="program">
                     {{ range $i, $day := .days}}
                     <div class="card border-{{$day.color}}" id="{{$i}}">
-                                                <div class="card-header bg-{{$day.color}}" id="headingOne">
+                                                <div class="card-header bg-{{$day.color}} text-{{$day.font}}" id="headingOne">
                         <h5 class="mb-0">
-                            <a href="#{{$i}}"class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            <a href="#{{$i}}"class="btn btn-lg btn-link text-{{$day.font}}" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                 aria-controls="collapseOne">
                                 {{ $day.name }}
                             </a>
