@@ -13,7 +13,7 @@
                 {{ if eq $index 2}}
                     {{ with .title }}<h2 id="{{ $element.type }}">{{ . }}</h2>{{ end }}
                     {{ with .description }}<p>{{ . | markdownify}}</p>{{ end }}
-                    <table class="table">
+                    <table class="table-responsive table-striped">
                         {{ with $.Site.Data.conference2019.sponsorshipCosts }}
                         <thead>
                             <tr>
