@@ -52,7 +52,13 @@
                         <div class="speaker card mb-3">
                             <img src="/{{$yr}}/speakers/{{ $speaker.img }}" class="card-img-top" alt="{{ $speaker.name }}">
                             <div class="card-body">
-                                <h5 class="card-title"><a href="{{$speaker.link}}">{{ $speaker.name }}</a></h5>
+                                <h5 class="card-title">
+                                    {{if $speaker.link}}
+                                    <a href="{{$speaker.link}}">{{ $speaker.name }}</a>
+                                    {{else}}
+                                    {{ $speaker.name }}
+                                    {{ end }}
+                                </h5>
                                 <p class="card-text">
                                     {{ $speaker.bio | truncate 250 }}
                                     {{ if gt (len $speaker.bio) 250 }}
