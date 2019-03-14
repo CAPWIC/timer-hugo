@@ -1432,4 +1432,8 @@ hr {
   border-color: #00A6BB !important;
 }
 
+.speaker-modal-pic {
+  max-width: 100px;
+}
+
 /*# sourceMappingURL=maps/style.css.map */
