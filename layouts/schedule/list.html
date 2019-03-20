@@ -5,7 +5,7 @@
 
 {{ with .Site.Data.conference2019 }}
 <section class="company-description">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             {{ partial "2019/sponsors.html" $ }}
             <div class="col-md wow fadeInRight" data-wow-delay=".3s">
@@ -18,69 +18,65 @@
                 <!-- <div id="program">
                     {{ range $i, $day := .days}}
                     <div class="card border-{{$day.color}}" id="{{$i}}">
-                                                <div class="card-header bg-{{$day.color}} text-{{$day.font}}" id="headingOne">
-                        <h5 class="mb-0">
-                            <a href="#{{$i}}"class="btn btn-lg btn-link text-{{$day.font}}" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                aria-controls="collapseOne">
-                                {{ $day.name }}
-                            </a>
-                        </h5>
-                    </div>
-                    
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
-                        <div class="card-body">
-                            <table class="table-responsive table-hover table-striped">
-                                <thead>
-                                    <tr class="d-flex">
-                                        <th class="col-2">Time</th>
-                                        <th class="col-3">Title</th>
-                                        <th class="col-2">Location</th>
-                                        <th class="col-5">Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{ range $eventIndex, $event := $day.events}}
-                                    {{ $eventId := print $i "-" $eventIndex }}
-                                    <tr id="{{ $eventId }}" class="d-flex">
-                                        {{ if $event.sessions}}
-                                            <td class="col-2">
-                                                {{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML  }}
-                                            </td>
-                                            <td class="col-3">
-                                                {{ $event.name | safeHTML  }}
-                                            </td>
-                                            <td class="col-7" colspan="2">
-                                                <table class="table-responsive table-hover">
-                                                    <tbody>
-                                                        {{ range $evtItemIdx, $ev := $event.sessions }}
-                                                        <tr>
-                                                            <td class="col-2">{{ $ev.location | safeHTML }}</td>
-                                                            <td class="col-5"><h6>{{ $ev.name }}</h6>{{ $ev.details | safeHTML }}</td>
-                                                        </tr>
-                                                        {{ end }}
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        {{ else }}
-                                            <td class="col-2">
-                                                {{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML  }}
-                                            </td>
-                                            <td class="col-3">
-                                                {{ $event.name | safeHTML  }}
-                                            </td>
-                                            <td class="col-2">
-                                                {{ $event.location | safeHTML  }}
-                                            </td>
-                                            <td class="col-5">
-                                                {{ $event.description | safeHTML }}
-                                            </td>
-                                        {{ end }}
-                                    </tr>
-                                    {{ end }}
-                                </tbody>
-                            </table>
+                        <div class="card-header bg-{{$day.color}} text-{{$day.font}}" id="headingOne">
+                            <h5 class="mb-0">
+                                <a href="#{{$i}}"class="btn btn-lg btn-link text-{{$day.font}}" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    {{ $day.name }}
+                                </a>
+                            </h5>
                         </div>
-                    </div>
+                    
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                            <div class="card-body">
+                                <table class="table-responsive table-hover table-striped">
+                                    <thead>
+                                        <tr class="d-flex">
+                                            <th class="col-2">Time</th>
+                                            <th class="col-3">Title</th>
+                                            <th class="col-2">Location</th>
+                                            <th class="col-5">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{ range $eventIndex, $event := $day.events}}
+                                        {{ $eventId := print $i "-" $eventIndex }}
+                                        <tr id="{{ $eventId }}" class="d-flex">
+                                            {{ if $event.sessions}}
+                                            <td class="col-2"> {{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML  }}</td>
+                                            <td class="col-3">{{ $event.name | safeHTML  }}</td>
+                                                <td>
+                                                    <table class="table-responsive table-hover">
+                                                        <tbody>
+                                                            {{ range $evtItemIdx, $ev := $event.sessions }}
+                                                            <tr class="d-flex">
+                                                                <td class="col-4">{{ $ev.location | safeHTML }}</td>
+                                                                <td class="col-8"><h7>{{ $ev.name }}</h7>{{ $ev.details | safeHTML }}</td>
+                                                            </tr>
+                                                            {{ end }}
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            {{ else }}
+                                                <td class="col-2">
+                                                    {{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML  }}
+                                                </td>
+                                                <td class="col-3">
+                                                    {{ $event.name | safeHTML  }}
+                                                </td>
+                                                <td class="col-2">
+                                                    {{ $event.location | safeHTML  }}
+                                                </td>
+                                                <td class="col-5">
+                                                    {{ $event.description | safeHTML }}
+                                                </td>
+                                            {{ end }}
+                                        </tr>
+                                        {{ end }}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     {{ end }}
                 </div> -->
