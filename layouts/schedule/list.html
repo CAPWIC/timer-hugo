@@ -15,7 +15,7 @@
                     <p class="lead">{{ .body | safeHTML }}</p>
                 </div>
 
-                <!-- <div id="program">
+                <div id="program">
                     {{ range $i, $day := .days}}
                     <div class="card border-{{$day.color}}" id="{{$i}}">
                         <div class="card-header bg-{{$day.color}} text-{{$day.font}}" id="headingOne">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     {{ end }}
-                </div> -->
+                </div>
             </div>
             {{ end }}
         </div>
