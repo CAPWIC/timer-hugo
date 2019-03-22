@@ -1436,4 +1436,8 @@ hr {
   max-width: 100px;
 }
 
+img.parking {
+  max-width: 600px;
+}
+
 /*# sourceMappingURL=maps/style.css.map */
