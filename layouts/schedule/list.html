@@ -75,15 +75,15 @@
                                         {{ $eventId := print $i "-" $eventIndex }}
                                         <tr id="{{ $eventId }}" class="d-flex">
                                             {{ if $event.sessions}}
-                                            <td class="col-2"> {{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML  }}</td>
-                                            <td class="col-3">{{ $event.name | safeHTML  }}</td>
+                                            <td class="col-2"> {{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML }}</td>
+                                            <td class="col-3">{{ $event.name | safeHTML }}</td>
                                                 <td>
                                                     <table class="table-responsive table-hover">
                                                         <tbody>
                                                             {{ range $evtItemIdx, $ev := $event.sessions }}
                                                             <tr class="d-flex">
                                                                 <td class="col-4">{{ $ev.location | safeHTML }}</td>
-                                                                <td class="col-8"><h7>{{ $ev.name }}</h7>{{ $ev.details | safeHTML }}</td>
+                                                                <td class="col-8"><h7>{{ $ev.name | safeHTML }}</h7>{{ $ev.details | safeHTML }}</td>
                                                             </tr>
                                                             {{ end }}
                                                         </tbody>
@@ -91,13 +91,13 @@
                                                 </td>
                                             {{ else }}
                                                 <td class="col-2">
-                                                    {{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML  }}
+                                                    {{ $event.time_start| safeHTML }} - {{ $event.time_end | safeHTML }}
                                                 </td>
                                                 <td class="col-3">
-                                                    {{ $event.name | safeHTML  }}
+                                                    {{ $event.name | safeHTML }}
                                                 </td>
                                                 <td class="col-2">
-                                                    {{ $event.location | safeHTML  }}
+                                                    {{ $event.location | safeHTML }}
                                                 </td>
                                                 <td class="col-5">
                                                     {{ $event.description | safeHTML }}

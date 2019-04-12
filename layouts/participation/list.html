@@ -22,15 +22,30 @@
                         <a class="float-right btn btn-primary btn-lg" rel="noopener noreferrer" target='_blank' href="{{.submission.link}}" role="button">Submit now!</a>
                     </p>
                 </div>
-                <div class="list-group">
+                <div class="list-group" id="tracks">
                     {{ range .submission.tracks}}
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <a href="#tracks" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">{{ .name }}</h5>
                             </div>
                             <p class="mb-1">{{ .description }}</p>
                         </a>
                     {{ end }}
+                    <br>
+                </div>
+                <div class="jumbotron" id="awards">
+                    <h1 class="display-6">{{ .participation.title }}</h1>
+                    <div class="list-group">
+                        {{ range .participation.awards }}
+                            <a href="#awards" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ .name | safeHTML }}</h5>
+                                </div>
+                                <p class="mb-1"><b>{{ .awardee | safeHTML }}</b>, {{ .school | safeHTML }}</p>
+                                <p class="mb-1"><i>{{ .presentation | safeHTML }}</i></p>
+                            </a>
+                        {{ end }}
+                    </div>
                 </div>
             </div>
         </div>
