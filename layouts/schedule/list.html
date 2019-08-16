@@ -104,9 +104,11 @@
                                                 <td class="col-2">
                                                     {{ $event.location | safeHTML }}
                                                 </td>
+                                                {{ with $event.description }}
                                                 <td class="col-5">
                                                     {{ $event.description | safeHTML }}
                                                 </td>
+                                                {{ end }}
                                             {{ end }}
                                         </tr>
                                         {{ end }}
