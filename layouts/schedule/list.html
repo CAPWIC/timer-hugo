@@ -83,7 +83,12 @@
                                                             {{ range $evtItemIdx, $ev := $event.sessions }}
                                                             <tr class="d-flex">
                                                                 <td class="col-4">{{ $ev.location | safeHTML }}</td>
-                                                                <td class="col-8"><h7>{{ $ev.name | safeHTML }}</h7>{{ $ev.details | safeHTML }}</td>
+
+                                                                <td class="col-8"><h7>{{ $ev.name | safeHTML }}</h7>
+                                                                {{ with $ev.details }}
+                                                                {{ $ev.details | safeHTML }}
+                                                                {{ end }}
+                                                                </td>
                                                             </tr>
                                                             {{ end }}
                                                         </tbody>
