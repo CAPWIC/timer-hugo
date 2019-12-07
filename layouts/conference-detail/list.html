@@ -6,12 +6,12 @@
 {{ "<!-- Company Description Section Start -->" | safeHTML }}
 {{ $yr := .Params.year }}
 {{$data := print "conference" $yr}}
-{{$url := print $yr "/sponsors.html"}}
+<!-- {{$url := print $yr "/sponsors.html"}} -->
 {{with index .Site.Data $data }}
 <section class="company-description">
     <div class="container">
         <div class="row">
-            {{ partial $url $ }}
+            {{ partial "sponsors.html" $ }}
             <div class="col-md">
                 <div class="row">
                     <div class="col-md">
@@ -147,7 +147,6 @@
                                 {{ end }}
                             </dl>
                         {{ end }}
-                        <p><sup>*</sup>2 queen beds for occupants to share</p>
                     
                     {{ end }}
 
