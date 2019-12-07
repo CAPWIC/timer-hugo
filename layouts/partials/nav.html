@@ -1,4 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+{{ $yr := .Params.year }}
+{{ if ne $yr $.Site.Params.current_conf_year}}
+    {{ with $yr }}
+    <div class="alert alert-danger mx-auto archived" role="alert">
+        This is an archived version of the {{.}} CAPWIC Conference Page. <a class="btn btn-primary" href="/conferences/{{$.Site.Params.current_conf_year}}">Go to the CAPWIC {{$.Site.Params.current_conf_year}} page</a>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{end}}
+    <!-- <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top archived"> -->
+ <!-- else  -->
+    <!-- <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"> -->
+{{ end }}
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container">
     <a class="navbar-brand" href="{{ .Site.BaseURL }}">
         {{ if isset .Site.Params "logo" }}
@@ -17,16 +31,21 @@
             <!-- <li class="nav-item">
                 <a class="nav-link" href="{{ .Site.BaseURL }}">{{ with .Site.Params.home }}{{ . }}{{ end }}</a>
             </li> -->
-
-            {{ range $.Site.Data.conference2019.nav }}
-                <li class="nav-item">
-                    <!-- {{ .name }} -->
-                    {{ if hasPrefix .url "http" }}
-                    <a class="nav-link" rel="noopener noreferrer" target='_blank' href="{{ .url }}">{{ .name }} <i class="icon ion-ios-open"></i></a>
-                    {{ else }}
-                    <a class="nav-link" href="{{ .url }}">{{ .name }}</a>
-                    {{ end }}
-                </li>
+            {{ if ne $yr $.Site.Params.current_conf_year}}
+                <li class="nav-item"></li>
+            {{ end }}
+            {{$data := print "conference" $yr}}
+            {{with index .Site.Data $data }}
+                {{ range .nav }}
+                    <li class="nav-item">
+                        <!-- {{ .name }} -->
+                        {{ if hasPrefix .url "http" }}
+                        <a class="nav-link" rel="noopener noreferrer" target='_blank' href="{{ .url }}">{{ .name }} <i class="icon ion-ios-open"></i></a>
+                        {{ else }}
+                        <a class="nav-link" href="{{ .url }}">{{ .name }}</a>
+                        {{ end }}
+                    </li>
+                {{ end }}
             {{ end }}
             <!-- {{ range .Site.Menus.nav }}
             <li class="nav-item">

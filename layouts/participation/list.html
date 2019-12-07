@@ -2,12 +2,13 @@
 {{ partial "nav.html" . }}
 
 {{ partial "page-title.html" . }}
-
-{{ with .Site.Data.conference2019 }}
+{{ $yr := .Params.year }}
+{{ $data := print "conference" $yr}}
+{{ with index .Site.Data $data }}
 <section class="company-description">
     <div class="container">
         <div class="row">
-            {{ partial "2019/sponsors.html" $ }}
+            {{ partial "sponsors.html" $ }}
             <div class="col-md wow fadeInRight" data-wow-delay=".3s">
                 <div class="jumbotron">
                     <h1 class="display-4">{{ .name }}</h1>

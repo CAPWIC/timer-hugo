@@ -4,17 +4,22 @@
 {{ partial "page-title.html" . }}
 
 {{ "<!-- Company Description Section Start -->" | safeHTML }}
+
+{{ $yr := .Params.year }}
+{{ $data := print "conference" $yr}}
+{{ with index .Site.Data $data }}
 <section class="company-description">
     <div class="container">
         <div class="row">
-            {{ partial "2019/sponsors.html" $ }}
+            {{ partial "sponsors.html" $ }}
             <div class="col-md wow fadeInLeft" data-wow-delay=".3s">
-                {{ range $index, $element := .Site.Data.conference2019.aboutItem }}
+                {{ range $index, $element := .aboutItem }}
                 {{ if eq $index 2}}
                     {{ with .title }}<h2 id="{{ $element.type }}">{{ . }}</h2>{{ end }}
                     {{ with .description }}<p>{{ . | markdownify}}</p>{{ end }}
+                    {{ with index $.Site.Data $data }}
                     <table class="table-responsive table-striped">
-                        {{ with $.Site.Data.conference2019.sponsorshipCosts }}
+                        {{ with .sponsorshipCosts }}
                         <thead>
                             <tr>
                                 <th style="padding:0 300px 0 0px;">Perk</th>
@@ -24,7 +29,7 @@
                             </tr>
                         </thead>
                         {{ end }}
-                        {{ range $sindex, $sponsorship := $.Site.Data.conference2019.sponsorship }}
+                        {{ range $sindex, $sponsorship := .sponsorship }}
                         <tbody>
                             <tr>
                                 <th colspan="7"> {{ .type }}</th>
@@ -44,11 +49,12 @@
                         </tbody>
                         {{ end }}
                     </table>
+                    {{ end }}
                 {{ end }}
                 {{ end }}
             </div>
         </div>
     </div>
 </section>
-
+{{ end }}
 {{ partial "footer.html" . }}

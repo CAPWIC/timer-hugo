@@ -12,7 +12,13 @@
     {{ "<!-- Mobile Specific Metas -->" | safeHTML }}
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ .Title }}</title>
+    <title>{{ $.Site.Params.title }}
+    {{ with .Params.year }}
+        {{ . | safeHTML}}
+    {{ end }}
+    - {{ .Title }}
+    </title>
+
     <link rel="icon" href="{{ "images/favicon.ico" | absURL }}">
 
     {{ "<!-- Twitter Bootstrs CSS -->" | safeHTML }}

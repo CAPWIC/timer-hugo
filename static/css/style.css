@@ -1440,4 +1440,8 @@ img.parking {
   max-width: 600px;
 }
 
+.alert.archived {
+  text-align: center;
+}
+
 /*# sourceMappingURL=maps/style.css.map */

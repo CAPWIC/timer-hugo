@@ -2,13 +2,13 @@
 {{ partial "nav.html" . }}
 <div class="capwic-body">
 {{ partial "page-title.html" . }}
-{{ $yr := $.Site.Params.current_conf_year }}
-{{$data := print "conference" $yr}}
-{{ with .Site.Data.conference2019 }}
+{{ $yr := $.Params.year }}
+{{ $data := print "conference" $yr}}
+{{ with index .Site.Data $data }}
 <section class="company-description">
     <div class="container">
         <div class="row">
-            {{ partial "2019/sponsors.html" $ }}
+            {{ partial "sponsors.html" $ }}
             <div class="col-md wow fadeInRight" data-wow-delay=".3s">
                 {{ with .schedule }}
                 <div class="row">

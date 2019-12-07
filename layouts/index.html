@@ -1,6 +1,10 @@
-<!-- until the conf is over, make the landing page go to the 2019 site 
-{{ with .GetPage "/conferences/2019/_index.md" }}{{.Render}}{{end}} -->
-{{ partial "header.html" . }}
+{{ $yr := $.Site.Params.current_conf_year }}
+{{$data := print "/conferences/" $yr "/_index.md"}}
+<!-- {{$data}} -->
+<!-- until the conf is over, make the landing page go to the current site  -->
+{{ with .GetPage $data }}{{.Render}}{{end}}
+
+<!-- {{ partial "header.html" . }}
 
 {{ partial "banner.html" . }}
 {{ partial "nav.html" . }}
@@ -13,4 +17,4 @@
 
 {{ partial "cta.html" . }}
 
-{{ partial "footer.html" . }} 
+{{ partial "footer.html" . }}  -->

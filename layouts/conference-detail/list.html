@@ -4,49 +4,31 @@
 {{ partial "page-title.html" . }}
 
 {{ "<!-- Company Description Section Start -->" | safeHTML }}
+{{ $yr := .Params.year }}
+{{$data := print "conference" $yr}}
+{{$url := print $yr "/sponsors.html"}}
+{{with index .Site.Data $data }}
 <section class="company-description">
     <div class="container">
         <div class="row">
-            {{ partial "2019/sponsors.html" $ }}
+            {{ partial $url $ }}
             <div class="col-md">
                 <div class="row">
                     <div class="col-md">
                         <div class="block">
-                            {{ with .Site.Data.conference2019.title }}<h3 class="subtitle wow fadeInUp" data-wow-delay=".3s"
-                                data-wow-duration="500ms">{{ . }}</h3>{{ end }}
-                            {{ with .Site.Data.conference2019.description }}
-                            <!-- Pre-Conference Welcome -->
-                            <!--
-                            <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
+                            
+                            {{ with .title }}
+                                <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s"
+                                data-wow-duration="500ms">{{ . }}</h3>
+                            {{ end }}
+                            {{ with .description }}
                                 {{ . | safeHTML }}
-                            </p>
-                    
-                            <h2>Registration is Open!</h2>
-                            <p>Please <a href="https://aceware.jmu.edu/wconnect/CourseStatus.awp?course=YP19CAP" target="_blank"
-                                    rel="noreferrer noopener">register now</a> to join us at CAPWIC 2019! If you have any questions or
-                                concerns about registration, you can reach us
-                                at <a href="mailto:registration@capwic.org" title="email registration staff">registration@capwic.org</a>.
-                            </p>
-                            -->
-
-                            <!-- Post-Conference Welcome -->
-                            <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
-                                <h2>Thank You!</h2>
-                                <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
-                                    Thank you to all attendees, participants, organizers, and sponsors who helped make CAPWIC 2019 a huge success!<br>
-                                    <br>
-                                    CAPWIC 2020 will be held at <a href="https://cnu.edu/" target="_blank" rel="noreferrer noopener">Christopher Newport Univeristy</a> in Newport News, VA.
-                                    Please check back later for more details!<br>
-                                    <br>
-                                    <center>Technical program awards can now be viewed under the Participation page or by clicking <a href="participation/#awards" target="_blank" rel="noreferrer noopener">here</a>.</center>
-                                </p>
-                            </p>
                             {{ end }}
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="block">
-                            {{ with .Site.Data.conference2019.deadlines }}
+                            {{ with .deadlines }}
                             <dl class="row">
                                 {{ range $index, $element := . }}
                                 <dt class="col-md-5 text-right">{{ .date | safeHTML }}</dt>
@@ -59,9 +41,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-9">
-                        {{ with .Site.Data.conference2019.speakers }}
+                        {{ with .speakers }}
                 
-                        {{ $yr := $.Site.Params.current_conf_year }}
+                        {{ $yr := $.Params.year }}
                         {{$data := print "conference" $yr}}
                         <h2 id="speakers">Speakers</h2>
                         {{ range $index, $speaker := . }}
@@ -116,8 +98,8 @@
                         {{ end }}
                     </div>
                     <div class="col-md-3">
-                        {{ with .Site.Data.conference2019.flyers }}
-                        {{ $yr := $.Site.Params.current_conf_year }}
+                        {{ with .flyers }}
+                        {{ $yr := $.Params.year }}
                         {{$data := print "conference" $yr}}
                         <h3 class="text-right">Flyers</h3>
                         <ul class="text-right">
@@ -126,7 +108,7 @@
                             {{ end }}
                         </ul>
                         {{ end }}
-                        {{ with .Site.Data.conference2019.policies }}
+                        {{ with .policies }}
                         <h3>Community Standards</h3>
                         {{ range $index, $element := . }}
                         <h4>{{ .name }}</h4>
@@ -146,7 +128,7 @@
 <section class="about-feature clearfix">
     <div class="container-fluid">
         <div class="row">
-            {{ range $index, $element := .Site.Data.conference2019.aboutItem }}
+            {{ range $index, $element := .aboutItem }}
             {{ if ne .type "sponsorship"}}
             
             {{ $class := add $index 1 }}
@@ -157,10 +139,12 @@
                     {{ if eq .type "registration" }}
                         {{ with . }}
                             <dl class="row">
-                            {{ range $rindex, $rate := $.Site.Data.conference2019.rates }}
-                                <dt class="col-md-10">{{ .description }}</dt>
-                                <dd class="col-md-2">{{ .cost }}</dd>
-                            {{ end }}
+                                {{with index $.Site.Data $data }}
+                                    {{ range $rindex, $rate := .rates }}
+                                        <dt class="col-md-10">{{ .description }}</dt>
+                                        <dd class="col-md-2">{{ .cost }}</dd>
+                                    {{ end }}
+                                {{ end }}
                             </dl>
                         {{ end }}
                         <p><sup>*</sup>2 queen beds for occupants to share</p>
@@ -175,5 +159,5 @@
     </div>
 </section>
 {{ "<!--  Company Feature Section End -->" | safeHTML }}
-
+{{ end }}
 {{ partial "footer.html" . }}
