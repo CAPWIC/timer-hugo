@@ -1,6 +1,9 @@
-{{ $yr := .Params.year }}
-{{ if ne $yr $.Site.Params.current_conf_year}}
-    {{ with $yr }}
+{{ $.Scratch.Set "year" $.Site.Params.current_conf_year }}
+{{ with .Params.year }}
+    {{ $.Scratch.Set "year" . }}
+{{ end }}
+{{ if ne ($.Scratch.Get "year") $.Site.Params.current_conf_year }}
+    {{ with $.Scratch.Get "year" }}
     <div class="alert alert-danger mx-auto archived" role="alert">
         This is an archived version of the {{.}} CAPWIC Conference Page. <a class="btn btn-primary" href="/conferences/{{$.Site.Params.current_conf_year}}">Go to the CAPWIC {{$.Site.Params.current_conf_year}} page</a>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -31,10 +34,10 @@
             <!-- <li class="nav-item">
                 <a class="nav-link" href="{{ .Site.BaseURL }}">{{ with .Site.Params.home }}{{ . }}{{ end }}</a>
             </li> -->
-            {{ if ne $yr $.Site.Params.current_conf_year}}
+            {{ if ne ($.Scratch.Get "year") $.Site.Params.current_conf_year}}
                 <li class="nav-item"></li>
             {{ end }}
-            {{$data := print "conference" $yr}}
+            {{$data := print "conference" ($.Scratch.Get "year") }}
             {{with index .Site.Data $data }}
                 {{ range .nav }}
                     <li class="nav-item">
