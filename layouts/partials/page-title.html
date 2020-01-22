@@ -9,11 +9,13 @@
                         {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
                         {{ $.Scratch.Add "path" .Site.BaseURL }}
                         <li class="breadcrumb-item"><a href="{{ .Site.BaseURL }}"><i class="icon ion-ios-home"></i>Home</a></li>
-                        {{ range $index, $element := split $url "/" }}
-                            {{ $.Scratch.Add "path" $element }}
-                            {{ if ne $element "" }}
-                                <li class="breadcrumb-item"><a href='{{ $.Scratch.Get "path" }}'>{{ . }}</a></li>
-                                {{ $.Scratch.Add "path" "/" }}
+                        {{ if ne .Permalink (print .Site.BaseURL "conferences/" $.Site.Params.current_conf_year "/")}}
+                            {{ range $index, $element := split $url "/" }}
+                                {{ $.Scratch.Add "path" $element }}
+                                {{ if ne $element "" }}
+                                    <li class="breadcrumb-item"><a href='{{ $.Scratch.Get "path" }}'>{{ . }}</a></li>
+                                    {{ $.Scratch.Add "path" "/" }}
+                                {{ end }}
                             {{ end }}
                         {{ end }}
                     </ol>
