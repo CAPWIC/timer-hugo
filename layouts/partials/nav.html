@@ -11,31 +11,30 @@
         </button>
     </div>
     {{end}}
-    <!-- <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top archived"> -->
- <!-- else  -->
-    <!-- <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"> -->
 {{ end }}
     <!-- Modal -->
-    <!-- <script></script> -->
     <div class="modal fade" id="registration-details-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                {{$data := print "conference" ($.Scratch.Get "year") }}
+                {{with index .Site.Data $data }}
+                
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Head's up! 👀</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{.registration_info.warning.header| safeHTML}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>In order to register for CAPWIC, you must create an account on "IRIS" the events management web application for Christopher Newport University (where CAPWIC is hosted this year).</p>
-                    <p>Simply click <code>Sign Up</code> on the next page</p>
+                    {{.registration_info.warning.body | safeHTML}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <a href="https://cnu.irisregistration.com/Form/2020CAPWIC" target="_blank"
+                    <a href="{{.registration_info.url}}" target="_blank"
                                 rel="noopener noreferrer" class="btn btn-primary" onclick="$('#registration-details-modal').modal('hide')">OK, proceed</a>
                 </div>
+                {{ end }}
             </div>
         </div>
     </div>
@@ -55,9 +54,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="{{ .Site.BaseURL }}">{{ with .Site.Params.home }}{{ . }}{{ end }}</a>
-            </li> -->
             {{ if ne ($.Scratch.Get "year") $.Site.Params.current_conf_year}}
                 <li class="nav-item"></li>
             {{ end }}
@@ -65,10 +61,10 @@
             {{with index .Site.Data $data }}
                 {{ range .nav }}
                     <li class="nav-item">
-                        <!-- {{ .name }} -->
                         {{ if hasPrefix .url "http" }}
-                            {{ if eq .name "Registration"}}
-                                <a class="nav-link" rel="noopener noreferrer" target='_blank' href="#" data-toggle="modal" data-target="#registration-details-modal">{{ .name }} <i class="icon ion-ios-open"></i></a>
+                            {{$confdata := print (index $.Site.Data $data) }}
+                            {{if and (isset (index (index $.Site.Data $data) "registration_info") "warning") (eq .name "Registration")}}
+                                <a class="nav-link" rel="noopener noreferrer" target='_blank' href="{{ .url }}" data-toggle="modal" data-target="#registration-details-modal">{{ .name }} <i class="icon ion-ios-open"></i></a>
                             {{ else}}
                                 <a class="nav-link" rel="noopener noreferrer" target='_blank' href="{{ .url }}">{{ .name }} <i class="icon ion-ios-open"></i></a>
                             {{ end }}
@@ -78,11 +74,6 @@
                     </li>
                 {{ end }}
             {{ end }}
-            <!-- {{ range .Site.Menus.nav }}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
-            </li>
-            {{ end }} -->
         </ul>
         <ul class="navbar-nav ml-auto d-none d-lg-flex">
             <li class="nav-item dropdown">
@@ -93,9 +84,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/conferences">Conferences</a>
                     <div class="dropdown-divider"></div>
-                    <!-- <a class="dropdown-item" href="/about">About</a> -->
                     <a class="dropdown-item" href="/contact">Contact</a>
-                    <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                 </div>
             </li>
     </div>
