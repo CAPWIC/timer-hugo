@@ -15,6 +15,30 @@
  <!-- else  -->
     <!-- <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"> -->
 {{ end }}
+    <!-- Modal -->
+    <!-- <script></script> -->
+    <div class="modal fade" id="registration-details-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Head's up! 👀</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>In order to register for CAPWIC, you must create an account on "IRIS" the events management web application for Christopher Newport University (where CAPWIC is hosted this year).</p>
+                    <p>Simply click <code>Sign Up</code> on the next page</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <a href="https://cnu.irisregistration.com/Form/2020CAPWIC" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-primary" onclick="$('#registration-details-modal').modal('hide')">OK, proceed</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container">
     <a class="navbar-brand" href="{{ .Site.BaseURL }}">
@@ -43,7 +67,11 @@
                     <li class="nav-item">
                         <!-- {{ .name }} -->
                         {{ if hasPrefix .url "http" }}
-                        <a class="nav-link" rel="noopener noreferrer" target='_blank' href="{{ .url }}">{{ .name }} <i class="icon ion-ios-open"></i></a>
+                            {{ if eq .name "Registration"}}
+                                <a class="nav-link" rel="noopener noreferrer" target='_blank' href="#" data-toggle="modal" data-target="#registration-details-modal">{{ .name }} <i class="icon ion-ios-open"></i></a>
+                            {{ else}}
+                                <a class="nav-link" rel="noopener noreferrer" target='_blank' href="{{ .url }}">{{ .name }} <i class="icon ion-ios-open"></i></a>
+                            {{ end }}
                         {{ else }}
                         <a class="nav-link" href="{{ .url }}">{{ .name }}</a>
                         {{ end }}
