@@ -135,7 +135,7 @@
             <div class="col-lg px-0 about-feature-{{ $class }}">
                 <div class="block wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
                     {{ with .title }}<h2>{{ . }}</h2>{{ end }}
-                    {{ with .description }}<p>{{ . | markdownify }}</p>{{ end }}
+                    {{ with .description }}<p>{{ .| safeHTML }}</p>{{ end }}
                     {{ if eq .type "registration" }}
                         {{ with . }}
                             <dl class="row">

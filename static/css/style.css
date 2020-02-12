@@ -142,7 +142,7 @@ a:hover {
 .global-page-header .breadcrumb {
   background: none;
   font-size: 16px;
-  padding: 8px  0;
+  padding: 8px 0;
 }
 
 .global-page-header .breadcrumb .active, .global-page-header .breadcrumb li a {
@@ -176,6 +176,7 @@ a:hover {
 }
 
 /*=== MEDIA QUERY ===*/
+
 .top-bar {
   /* position: fixed; */
   /* top: 0; */
@@ -935,10 +936,10 @@ article {
 }
 
 .post-content blockquote p {
-    padding: 10px 20px;
-    margin: 0 0 20px;
-    font-size: 17.5px;
-    border-left: 5px solid #eee;
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  border-left: 5px solid #eee;
 }
 
 .single-post .post-content ol li, .single-post .post-content ul li {
@@ -983,6 +984,7 @@ article {
 }
 
 /* portfolio single */
+
 .work-single {
   padding: 100px 0 20px;
 }
@@ -1006,6 +1008,7 @@ article {
   background: #eae9ec;
   color: #848484;
 }
+
 .work-single blockquote p {
   margin-bottom: 0;
 }
@@ -1368,6 +1371,7 @@ ul.social-icons li {
   color: black;
   text-decoration: none;
 }
+
 h2 {
   font-size: 2rem;
 }
@@ -1384,6 +1388,7 @@ h2 {
 .sponsor.card img.dark {
   background-color: #333;
 }
+
 #organizers a i {
   margin-right: 10px;
 }
@@ -1397,6 +1402,7 @@ nav a i {
   margin-right: inherit;
   margin-left: 5px;
 }
+
 hr {
   border: none;
   border-top: 3px solid #333;
@@ -1444,4 +1450,11 @@ img.parking {
   text-align: center;
 }
 
+dt i {
+  margin-left: 5px;
+}
+
+.about-feature .block a.btn-warning {
+  color: black;
+}
 /*# sourceMappingURL=maps/style.css.map */
