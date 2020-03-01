@@ -12,8 +12,12 @@
             <div class="col-md wow fadeInRight" data-wow-delay=".3s">
                 {{ with .schedule }}
                 <div class="row">
-                    <div class="col-8">
-                        <h2>Logistics</h2>
+                    <div class="col">
+                        <p>The complete schedule is nearly complete, but check this sneak preview:</p>
+                        <h2>Friday March 27</h2>
+                        {{ .body | safeHTML }}
+                        <h2>Saturday March 28</h2>
+                        <!-- <h2>Logistics</h2>
                         <a href="/{{$yr}}/schedule/capwic-parking.jpg"  target="_blank" rel="noopener noreferrer"><img src="/{{$yr}}/schedule/capwic-parking.jpg" class="parking" alt=""></a>
                         <h3>Locations</h3>
                         <p>Friday afternoon (only) we will be located in President's Hall. This is a short walk from Madison Hotel and the several nearby parking decks.</p>
@@ -35,16 +39,16 @@
                         <h4>Saturday</h4>
                         <ul>
                             <li><a href="https://goo.gl/maps/wFV8Wmm6aGx" target="_blank" rel="noopener noreferrer">D2 Parking Lot <i class="icon ion-ios-open"></i></a></li>
-                        </ul>
+                        </ul> -->
 
                     </div>
-                    <div class="col-4">
+                    <!-- <div class="col-4">
 
                         <div class="jumbotron">
                             <h1 class="display-4">{{ .heading }}</h1>
                             <p class="lead">{{ .body | safeHTML }}</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div id="program">
