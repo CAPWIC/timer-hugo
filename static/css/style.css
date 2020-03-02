@@ -1457,4 +1457,9 @@ dt i {
 .about-feature .block a.btn-warning {
   color: black;
 }
+
+.program-table tr *:nth-child(6){
+  border-left: 1px dashed #999;
+}
+
 /*# sourceMappingURL=maps/style.css.map */
