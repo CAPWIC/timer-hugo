@@ -1458,7 +1458,7 @@ dt i {
   color: black;
 }
 
-.program-table tr *:nth-child(6){
+.program-table tr *:nth-child(5){
   border-left: 1px dashed #999;
 }
 
