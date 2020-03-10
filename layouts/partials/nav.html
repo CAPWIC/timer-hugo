@@ -4,7 +4,7 @@
 {{ end }}
 {{ if ne ($.Scratch.Get "year") $.Site.Params.current_conf_year }}
     {{ with $.Scratch.Get "year" }}
-    <div class="alert alert-danger mx-auto archived" role="alert">
+    <div class="alert alert-warning mx-auto archived" role="alert">
         This is an archived version of the {{.}} CAPWIC Conference Page. <a class="btn btn-primary" href="/conferences/{{$.Site.Params.current_conf_year}}">Go to the CAPWIC {{$.Site.Params.current_conf_year}} page</a>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -12,22 +12,53 @@
     </div>
     {{end}}
 {{ end }}
-    <!-- Modal -->
+<!-- Modal -->
+{{ $data := print "conference" ($.Scratch.Get "year") }}
+{{ with index .Site.Data $data }}
+    {{ with .major_announcement}}
+    <div class="alert alert-danger mx-auto archived d-none more-announcement" role="alert" id="major-announcement-alert">
+        {{ .header| safeHTML }}
+        <button type="button" class="btn btn-info">
+            Read more...
+        </button>
+    </div>
+        <div class="modal fade" id="major-announcement-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ .header| safeHTML }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ .body| safeHTML }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+{{ end }}
     <div class="modal fade" id="registration-details-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                {{$data := print "conference" ($.Scratch.Get "year") }}
-                {{with index .Site.Data $data }}
+                
+                {{ with index .Site.Data $data }}
                 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{.registration_info.warning.header| safeHTML}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ .registration_info.warning.header| safeHTML }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{.registration_info.warning.body | safeHTML}}
+                    {{ .registration_info.warning.body | safeHTML }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>

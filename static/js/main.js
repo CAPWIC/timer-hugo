@@ -129,7 +129,35 @@ $(document).ready(function () {
 
     });
 
+    function checkShowAndSetupModal () {
+        let modal = $("#major-announcement-modal");
+        if (modal) {
+            modal.modal();
+        }
+        $('#major-announcement-modal').on('hidden.bs.modal', function (e) {
+            console.log('setting cooooookie');
+            document.cookie = "ack-capwic=true; expires=Fri, 31 Dec 9999 23:59:59 UTC";
+            checkShowAndSetupAlert();
+        });
+    }
 
+    function checkShowAndSetupAlert() {
+        let closedModal = $(".more-announcement");
+        if (closedModal) {
+            closedModal.removeClass("d-none");
+            closedModal.click(function () {
+                document.cookie = "ack-capwic=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                $("#major-announcement-alert").alert("close");
+                checkShowAndSetupModal();
+            })
+        }
+    }
+
+    if (document.cookie.replace(/(?:(?:^|.*;\s*)ack-capwic\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
+        checkShowAndSetupModal();
+    } else {
+        checkShowAndSetupAlert();
+    }
 });
 
 
