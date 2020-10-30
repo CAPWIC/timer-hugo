@@ -153,11 +153,11 @@ $(document).ready(function () {
         }
     }
 
-    if (document.cookie.replace(/(?:(?:^|.*;\s*)ack-capwic\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
-        checkShowAndSetupModal();
-    } else {
-        checkShowAndSetupAlert();
-    }
+    // if (document.cookie.replace(/(?:(?:^|.*;\s*)ack-capwic\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
+    //     checkShowAndSetupModal();
+    // } else {
+    //     checkShowAndSetupAlert();
+    // }
 });
 
 

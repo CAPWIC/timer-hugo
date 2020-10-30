@@ -36,6 +36,15 @@
                                 {{ end }}
                             </dl>
                             {{ end }}
+                            {{ if not .deadlines }}
+                                {{ with .policies }}
+                                    <h3>Community Standards</h3>
+                                    {{ range $index, $element := . }}
+                                        <h4>{{ .name }}</h4>
+                                        <p>{{ .body | safeHTML }}</p>
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
                         </div>
                     </div>
                 </div>
@@ -108,12 +117,14 @@
                             {{ end }}
                         </ul>
                         {{ end }}
-                        {{ with .policies }}
-                        <h3>Community Standards</h3>
-                        {{ range $index, $element := . }}
-                        <h4>{{ .name }}</h4>
-                        <p>{{ .body | safeHTML }}</p>
-                        {{ end }}
+                        {{ if .deadlines}}
+                            {{ with .policies }}
+                                <h3>Community Standards</h3>
+                                {{ range $index, $element := . }}
+                                    <h4>{{ .name }}</h4>
+                                    <p>{{ .body | safeHTML }}</p>
+                                {{ end }}
+                            {{ end }}
                         {{ end }}
                     </div>
                 </div>
