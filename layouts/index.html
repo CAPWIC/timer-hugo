@@ -2,9 +2,9 @@
 {{$data := print "/conferences/" $yr "/_index.md"}}
 <!-- {{$data}} -->
 <!-- until the conf is over, make the landing page go to the current site  -->
-<!-- {{ with .GetPage $data }}{{.Render}}{{end}} -->
+{{ with .GetPage $data }}{{.Render}}{{end}} 
 
-{{ partial "header.html" . }}
+<!--{{ partial "header.html" . }}
 
 {{ partial "banner.html" . }}
 {{ partial "nav.html" . }}
@@ -17,4 +17,4 @@
 
 {{ partial "cta.html" . }}
 
-{{ partial "footer.html" . }}
+{{ partial "footer.html" . }}-->
