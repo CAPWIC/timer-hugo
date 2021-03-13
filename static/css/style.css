@@ -1343,7 +1343,7 @@ ul.social-icons li {
 .card img {
   object-fit: cover;
   max-width: 200px;
-  max-height: 200px;
+  /*max-height: 200px;*/
 }
 
 .about-feature .card-deck .card, .card-deck .card {
