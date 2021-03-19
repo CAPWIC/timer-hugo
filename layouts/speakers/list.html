@@ -1,0 +1,32 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+<div class="capwic-body">
+{{ partial "page-title.html" . }}
+{{ $yr := $.Params.year }}
+{{ $data := print "conference" $yr}}
+{{ with index .Site.Data $data }}
+<section class="company-description">
+    <div class="container">
+        <div class="row">
+            {{ partial "sponsors.html" $ }}
+            <div class="col-md wow fadeInRight" data-wow-delay=".3s">
+                {{ with .speakersbios }}
+
+                <div id="program">
+                    {{ range $i, $element := .}}
+                    <div class="" id="">
+                        <h2>{{.name}}</h2>
+                        <img src="/{{$yr}}/speakers/{{.img}}" alt="{{.name}}" style="float: left; clear: none; max-width: 200px; margin: 15px;"/>
+                        {{.bio | safeHTML}}
+                    </div>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+</div>
+{{ partial "footer.html" . }}
