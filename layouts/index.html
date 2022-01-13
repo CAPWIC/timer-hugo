@@ -2,10 +2,10 @@
 {{$data := print "/conferences/" $yr "/_index.md"}}
 <!-- {{$data}} -->
 <!-- Display the actual site by uncommenting the following line
-{{ with .GetPage $data }}{{.Render}}{{end}} 
 -->
+{{ with .GetPage $data }}{{.Render}}{{end}} 
 
-<!-- Display the banner page by commenting out all of the following-->
+<!-- Display the banner page by commenting out all of the following
 {{ partial "header.html" . }}
 
 {{ partial "banner.html" . }}
@@ -20,3 +20,4 @@
 {{ partial "cta.html" . }}
 
 {{ partial "footer.html" . }}
+-->
