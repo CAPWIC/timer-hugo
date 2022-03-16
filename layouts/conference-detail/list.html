@@ -11,7 +11,6 @@
 <section class="company-description">
     <div class="container">
         <div class="row">
-            {{ partial "sponsors.html" $ }}
             <div class="col-md">
                 <div class="row">
                     <div class="col-md">
@@ -49,15 +48,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         {{ with .speakers }}
                 
                         {{ $yr := $.Params.year }}
                         {{$data := print "conference" $yr}}
-                        <h2 id="speakers">Speakers</h2>
+                        <h2 id="speakers" style="margin-top: 10px;">Speakers</h2>
+                        <div class="row">
                         {{ range $index, $speaker := . }}
-                        <div class="speaker card mb-3">
-                            <img src="/{{$yr}}/speakers/{{ $speaker.img }}" class="card-img-top" alt="{{ $speaker.name }}">
+                        <div class="col-md-4">
+                        <div class="card mb-3">
+                            <img src="/{{$yr}}/speakers/{{ $speaker.img }}" class="card-img-top" alt="{{ $speaker.name }}" style="max-width: inherit;">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     {{if $speaker.link}}
@@ -77,7 +78,7 @@
                                 </p>
                                 <!-- <p class="card-text collapse" id="{{$index}}-more-bio">{{ substr $speaker.bio 243 | safeHTML}}</p> -->
                             </div>
-                        </div>
+                        </div></div>
                         <div class="modal fade" id="speakerModalScrollable-{{$index}}" tabindex="-1" role="dialog"
                             aria-labelledby="speakerModalScrollableTitle-{{$index}}" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -105,29 +106,10 @@
                         </div>
                         {{ end }}
                         {{ end }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ with .flyers }}
-                        {{ $yr := $.Params.year }}
-                        {{$data := print "conference" $yr}}
-                        <h3 class="text-right">Flyers</h3>
-                        <ul class="text-right">
-                            {{ range $index, $element := . }}
-                            <li><a href="/{{$yr}}/flyers/{{ .link }}">{{ .text }} <i class="icon ion-md-cloud-download"></i></a></li>
-                            {{ end }}
-                        </ul>
-                        {{ end }}
-                        {{ if .deadlines}}
-                            {{ with .policies }}
-                                <h3>Community Standards</h3>
-                                {{ range $index, $element := . }}
-                                    <h4>{{ .name }}</h4>
-                                    <p>{{ .body | safeHTML }}</p>
-                                {{ end }}
-                            {{ end }}
-                        {{ end }}
+                        </div>
                     </div>
                 </div>
+                {{ partial "sponsors-bg.html" $ }}
             </div>
             
         </div>
@@ -143,7 +125,7 @@
             {{ if ne .type "sponsorship"}}
             
             {{ $class := add $index 1 }}
-            <div class="col-lg px-0 about-feature-{{ $class }}">
+            <div class="col-md-3 px-0 about-feature-{{ $class }}">
                 <div class="block wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
                     {{ with .title }}<h2>{{ . }}</h2>{{ end }}
                     {{ with .description }}<p>{{ .| safeHTML }}</p>{{ end }}
@@ -165,6 +147,33 @@
             </div>
             {{ end }}
             {{ end }}
+            <div class="col-md-3 px-0 about-feature-3">
+                <div class="block wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
+                        {{ with .flyers }}
+                        {{ $yr := $.Params.year }}
+                        {{$data := print "conference" $yr}}
+                        <h3>Flyers</h3>
+                        <ul>
+                            {{ range $index, $element := . }}
+                            <li><a href="/{{$yr}}/flyers/{{ .link }}">{{ .text }} <i class="icon ion-md-cloud-download"></i></a></li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                </div>
+                    </div>
+            <div class="col-md-3 px-0 about-feature-1">
+                <div class="block wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
+                        {{ if .deadlines}}
+                            {{ with .policies }}
+                                <h3>Community Standards</h3>
+                                {{ range $index, $element := . }}
+                                    <h4>{{ .name }}</h4>
+                                    <p>{{ .body | safeHTML }}</p>
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                </div>
+                    </div>
         </div>
     </div>
 </section>
