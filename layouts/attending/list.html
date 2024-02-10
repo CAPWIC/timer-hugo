@@ -1,0 +1,60 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+
+{{ partial "page-title.html" . }}
+
+{{ $yr := .Params.year }}
+{{$data := print "conference" $yr}}
+<!-- {{$url := print $yr "/sponsors.html"}} -->
+{{with index .Site.Data $data }}
+
+{{ "<!-- Company Description Section Start -->" | safeHTML }}
+<section class="company-description">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s">
+                {{ with .attending.image }}<img src="{{ . | absURL }}" alt="" class="img-fluid">{{ end }}
+            </div>
+            <div class="col-md-6">
+                <div class="block">
+                    {{ with .attending.title }}<h1 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">{{ . }}</h1>{{ end }}
+                    {{ with .attending.description }}
+                    <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
+                        {{ . | safeHTML }}
+                    </p>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ "<!--  Company Feature Section Start -->" | safeHTML }}
+<section class="about-feature clearfix">
+    <div class="container-fluid">
+        <div class="row">
+            {{ range $index, $element := .attending.aboutItem }}
+            <div class="col-lg-4 px-0">
+                {{ $class := add $index 1 }}
+                <div class="block about-feature-{{ $class }} wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
+                    {{ with .title }}<h2>{{ . }}</h2>{{ end }}
+                    {{ with .description }}
+                      {{ . | safeHTML }}
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ "<!--  Company Feature Section End -->" | safeHTML }}
+
+{{ end }}
+
+{{ partial "team.html" . }}
+
+{{ partial "clients.html" . }}
+
+{{ partial "cta.html" . }}
+
+{{ partial "footer.html" . }}
