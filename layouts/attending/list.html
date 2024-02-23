@@ -12,10 +12,11 @@
 <section class="company-description">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s">
+            <div class="col-lg-6 wow fadeInLeft" data-wow-delay=".3s">
                 {{ with .attending.image }}<img src="{{ . | absURL }}" alt="" class="img-fluid">{{ end }}
+                {{ with .attending.code }}{{. | safeHTML}}{{ end }}
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <div class="block">
                     {{ with .attending.title }}<h1 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">{{ . }}</h1>{{ end }}
                     {{ with .attending.description }}
