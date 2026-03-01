@@ -14,7 +14,7 @@
             {{ partial "sponsors.html" $ }}
             <div class="col-md wow fadeInLeft" data-wow-delay=".3s">
                 {{ range $index, $element := .aboutItem }}
-                {{ if eq $index 2}}
+                {{ if eq $element.type "sponsorship" }}
                     {{ with .title }}<h2 id="{{ $element.type }}">{{ . }}</h2>{{ end }}
                     {{ with .description }}<p>{{ . | markdownify}}</p>{{ end }}
                     {{ with index $.Site.Data $data }}
