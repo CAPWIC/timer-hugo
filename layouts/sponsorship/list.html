@@ -16,7 +16,7 @@
                 {{ range $index, $element := .aboutItem }}
                 {{ if eq $element.type "sponsorship" }}
                     {{ with .title }}<h2 id="{{ $element.type }}">{{ . }}</h2>{{ end }}
-                    {{ with .description }}<p>{{ . | markdownify}}</p>{{ end }}
+                    {{ with .description }}<p>{{ . | safeHTML}}</p>{{ end }}
                     {{ with index $.Site.Data $data }}
                     <table class="table-responsive table-striped">
                         {{ with .sponsorshipCosts }}
